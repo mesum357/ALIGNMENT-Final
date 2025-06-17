@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   min-height: 1100px;
   overflow-y: hidden;
-  background-image: url(../img/starBg.png);
+  background-image: url(../img/starBg.webp);
   background-size: cover;
 }
 
@@ -801,7 +801,7 @@ h1, h2, h3, h4, h5, h6 {
    
 }
 .starsBg.ScrollImgOne{
-  background-image: url(../img/scroll01.png);
+  background-image: url(../img/scroll01.webp);
   width: 100vw; 
   height: calc(100vw * 0.531);
   justify-content: space-between;
@@ -811,42 +811,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .starsBg.ScrollImgTwo{
-  background-image: url(../img/scroll02.png);
+  background-image: url(../img/scroll02.webp);
   width: 100vw; 
   height: calc(100vw * 0.651); 
   justify-content: space-between;
   background-position: top center;
 }
 .starsBg.ScrollImgThree{
-  background-image: url(../img/scroll03.png);
+  background-image: url(../img/scroll03.webp);
   width: 100vw; 
   height: calc(100vw * 0.711); 
   justify-content: space-between;
   background-position: center center;
 }
 .starsBg.ScrollImgFour{
-  background-image: url(../img/scroll04.png);
+  background-image: url(../img/scroll04.webp);
   width: 100vw; 
   height: calc(100vw * 0.711); 
   justify-content: space-between;
   background-position: top center;
 }
 .starsBg.ScrollImgFive{
-  background-image: url(../img/scroll05.png);
+  background-image: url(../img/scroll05.webp);
   width: 100vw; 
   height: calc(100vw * 0.451); 
   justify-content: space-between;
   background-position: top center;
 }
 .starsBg.starsBg.ScrollImgSix{
-  background-image: url(../img/scroll06.png);
+  background-image: url(../img/scroll06.webp);
   width: 100vw; 
   height: calc(100vw * 0.711); 
   justify-content: space-between;
   background-position: top center;
 }
 .starsBgTwo.ScrollImgSeven{
-  background-image: url(../img/scroll07.png) !important;
+  background-image: url(../img/scroll07.webp) !important;
   background-size: cover;
   background-position: top center;
   width: 100vw; 
@@ -857,7 +857,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 .starsBgTwo.ScrollImgEight{
-  background-image: url(../img/scroll08.png) !important;
+  background-image: url(../img/scroll08.webp) !important;
   background-size: cover;
   background-position: top center;
   width: 100vw; 
@@ -879,7 +879,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 .starsBgTwo.ScrollImgTen{
-    background-image: url(../img/scroll08.png) !important;
+    background-image: url(../img/scroll08.webp) !important;
   background-size: cover;
   background-position: top center;
   width: 100vw; 
@@ -891,7 +891,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .ScrollImgElevenContainer{
 
-  background-image: url(../img/scroll09.png) !important;
+  background-image: url(../img/scroll09.webp) !important;
   background-size: cover;
   background-position: top center;
 }
