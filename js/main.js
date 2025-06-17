@@ -1,3 +1,37 @@
+// Loading screen functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const loadingScreen = document.getElementById('loading-screen');
+  
+  // Hide loading screen when everything is loaded
+  window.addEventListener('load', () => {
+    // Add loaded class to all elements
+    const elementsToLoad = [
+      '#mainContainer',
+      '#scroolDataMain',
+      '.Stars',
+      '.Cloud',
+      '.CloudTwo',
+      '.titleMain',
+      '.fadeText',
+      '.topic',
+      '.topicText',
+      '.SkipButtonContainer',
+      '.welocme'
+    ];
+    
+    elementsToLoad.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => element.classList.add('loaded'));
+    });
+
+    // Hide loading screen
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 500);
+  });
+});
+
 window.addEventListener("load", () => {
   const stars = document.querySelector(".Stars");
   const cloud = document.querySelector(".Cloud");
