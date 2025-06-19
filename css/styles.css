@@ -546,7 +546,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #scroolDataMain {
   display: none;
-  opacity: 1;
+  opacity: 1 !important;
   visibility: visible;
   color: #000;
   padding: 0px;
@@ -938,6 +938,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .lastDis {
   position: relative;
+  height: 300px;
+}
+@media screen and (max-width:1300px) {
+  .lastDis{
+    height: 100px;
+  }
 }
 /* LAST PART */
 * {
@@ -2855,8 +2861,19 @@ margin-top: 135px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 999999999999999;
   transition: opacity 0.5s ease-out;
+}
+
+/* Hide main content during loading */
+body.loading #mainContainer,
+body.loading #scroolDataMain {
+  display: none !important;
+}
+
+/* Alternative approach - hide all content except loading screen */
+body.loading *:not(#loading-screen):not(#loading-screen *) {
+  visibility: hidden;
 }
 
 .loading-content {

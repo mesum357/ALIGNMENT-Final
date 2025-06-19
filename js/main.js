@@ -763,42 +763,14 @@ window.addEventListener("load", () => {
     // Always start at the top
     scroolDataMain.scrollTop = 0;
 
+    window.scrollTo({
+      top: scroolDataMain.scrollHeight,
+      behavior: "auto", // Use "auto" to jump directly without smooth scrolling
+    });
+
     // Hide the main container
     mainContainer.style.display = "none";
   });
-});
-
-// Load Lottie Rocket Animation
-const rocketAnimationInstance = lottie.loadAnimation({
-  container: document.getElementById("rocketAnimation"),
-  renderer: "svg",
-  loop: false,
-  autoplay: true,
-  path: "rocket-animation.json", // Correct path to your Lottie file
-});
-
-// When animation completes (~90%)
-rocketAnimationInstance.addEventListener("complete", function () {
-  const animationDuration = rocketAnimationInstance.totalFrames;
-  const stopAtFrame = animationDuration * 0.9;
-  rocketAnimationInstance.goToAndStop(stopAtFrame, true);
-
-  const rocketContainer = document.getElementById("rocketAnimation");
-  rocketContainer.style.opacity = "0";
-  rocketContainer.style.visibility = "hidden";
-  setTimeout(() => {
-    rocketContainer.style.display = "none";
-  }, 100);
-
-  // Show scroolDataMain from the top, not the bottom
-  const scroolDataMain = document.getElementById("scroolDataMain");
-  scroolDataMain.style.display = "block";
-
-  // Always start at the top
-  scroolDataMain.scrollTop = 0;
-
-  // Hide the main container
-  mainContainer.style.display = "none";
 });
 
 const target = document.getElementById("scroolDataMain");
@@ -924,34 +896,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const scroolDataMain = document.getElementById("scroolDataMain");
   const rocketStops = document.getElementById("rocketStops");
   const lastDis = document.querySelector(".lastDis");
+  const sec1File1 = document.querySelector(".sec-1-file1");
 
   if (!scroolDataMain || !rocketStops || !lastDis) {
     console.error("Required elements are missing in the DOM.");
     return;
   }
 
-  // Create an IntersectionObserver to detect when .lastDis enters the viewport
+  // --- START OF THE FIX ---
   const observer = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
       entries.forEach((entry) => {
+        // We only trigger if the element is intersecting (i.e., inside our trigger zone)
         if (entry.isIntersecting) {
-          // Wait for 0.5 seconds before hiding scroolDataMain and showing rocketStops
-          setTimeout(() => {
-            scroolDataMain.style.display = "none";
-            rocketStops.style.display = "block";
-            document.querySelector(".sec-1-file1").style.display = "block";
-          }, 1); // 0.5 seconds
+          scroolDataMain.style.display = "none";
+          rocketStops.style.display = "block";
+          if (sec1File1) sec1File1.style.display = "block";
+          observer.unobserve(lastDis); // Stop observing after the trigger
         }
       });
+    },
+    {
+      // This is the key change!
+      // '0px' for left/right margins.
+      // '-100% 0px' would mean it triggers at the very top edge. We give it a little buffer.
+      // We are creating a "trigger zone" at the top 10% of the screen.
+      rootMargin: "0px 0px -90% 0px",
+      threshold: 0.01 // A small threshold is fine
     }
   );
+  // --- END OF THE FIX ---
 
-  // Observe the .lastDis element
   observer.observe(lastDis);
 });
 
-// Update Go Back button functionality to ensure the rocket image appears at the bottom
-
+// Update Go Back button functionality (no changes needed here, it's already correct)
 document.getElementById("goBackButton").addEventListener("click", () => {
   const scroolDataMain = document.getElementById("scroolDataMain");
   const rocketStops = document.getElementById("rocketStops");
@@ -961,9 +940,9 @@ document.getElementById("goBackButton").addEventListener("click", () => {
   // Hide the current section
   rocketStops.style.display = "none";
 
-  // Show the first section and directly jump to its bottom
+  // Show the first section
   scroolDataMain.style.display = "block";
- 
+  scroolDataMain.style.opacity = "1";
 
   // Ensure the rocket image is visible and the video is hidden
   if (rocketImg && rocketVideoTwo) {
